@@ -1,1 +1,2 @@
-# expressoes_regulares
+# EXPRESSÕES REGULARES
+Este repositório apresenta conceitos básicos sobre expresões regulares.
