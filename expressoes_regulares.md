@@ -6,109 +6,137 @@ Para um nível avançado, veja: https://docs.python.org/3/howto/regex.html#non-c
 
 # EXPRESSÕES REGULARES (REGULAR EXPRESSIONS - REGEX))
 
-Metacaracteres precisam ser desconsiderados (escaped). Para isso precisam ser precedidos de \ caso queira o valor literal dos caracteres:
-```. ^ $ * + ? { } [ ] \ | ( )```
+**METACARATERES** (., ^, $, *, +, ?, { }, [ ], ( ), \ e |)
 
-```.```       - Qualquer caractere, exceto nova linha
+Caso se queira obter o valor literal de um metacaractere, é necessário utilizar "\\" antes desses caracteres.
 
-```\d```      - Dígitos (0-9)
+Exemplo:
+texto: "Bom dia..."
 
-```\D```      - Não dígitos (0-9)
+padrão sem o scape: ".+"
 
-```\w```      - Caracteres (a-z, A-Z, 0-9, _)
+resultado: ["Bom dia..."] 
 
-```\W```      - Não caracteres
+padrão com o scape "\\":  "\\.+"
 
-```\s```      - Espaços em branco (espaço, tabulação, nova linha)
+resultado: ["..."]
 
-```\S```      - Não é espaço em branco (espaço, tabulação, nova linha)
 
-```\A``` 	    - Retorna uma coincidência se os caracteres espedificados estão no início de uma sentença
+**CARACTERES ESPECIAIS UTILIZADOS EM REGEX**
 
-```\b```      - Palavra Word Boundary (Returns a match where the string contains a white space character)
+Temos ainda, caracteres especiais, que posseum valores próprios em REGEX, conforme detalhado a seguir:
 
-```\B```      - Not a Word Boundary (Returns a match where the string DOES NOT contain a white space character)
+. - Qualquer caractere, exceto nova linha
 
-```^```       - Início de uma sentença
+\d - Dígitos (0-9)
 
-```$```       - Final de uma sentença
+\D - NÃO dígitos (0-9)
 
-```\Z``` 	    - Retorna uma coincidência se os caracteres espedificados estão no final de uma sentença
+\w - Caracteres (a-z, A-Z, 0-9, _)
 
-```\s``` 	    - Retorna uma coincidência quando a sentença contém espaço(s) em branco
+\W - NÃO caracteres (todos os demais não especificados no item anterior)
 
-```\S``` 	    - Retorna uma coincidência quando a sentença NÃO CONTÉM espaço(s) em branco
+\s - Espaços em branco (espaço, tabulação, nova linha)
 
-```[]```      - Coincide caracteres que estão entre colchetes
+\S - NÃO é espaço em branco (espaço, tabulação, nova linha)
 
-```[^ ]```    - Coincide caracteres que não estão entre colchetes
+\A - Retorna uma coincidência se os caracteres espedificados estão no início de uma sentença
 
-```|```       - ou
+\b - Palavra na borda (retorna coincidência onde o texto contém um espaço em branco)
 
-```( )```     - grupo
+\B - Palavra NÃO na borda (retorna coincidência onde o texto NÃO CONTÉM um espaço em branco)
 
-## Quantificadores:
-```*```       - 0 ou mais
+^ - Início de uma sentença (colocar antes dos caracteres)
 
-```+```       - 1 ou mais
+$ - Final de uma sentença (colocar após os caracteres)
 
-```?```       - 0 ou mais
+\Z - Retorna uma coincidência se os caracteres espedificados estão no final de uma sentença (colocar após os caracteres)
 
-```{3}```     - Quantidade exata
+[] - Coincide caracteres que estão entre colchetes
 
-```{3,4}```   - Intervalo entre números (mínimo, máximo)
+[^ ] - Coincide caracteres que não estão entre colchetes
 
-## Sets (W3Schools)
+| - ou
 
-### Um conjunto (set) entre colchetes possui significados especiais:
-Set 	      Descrição
+( ) - grupo - Grupos são padrões a serem retornados. Você pode buscar um padrão e retornar apenas o que está no grupo (entre parêntesis)
 
-```[arn]``` 	    Retorna uma coincidência quando ao menos um dos caracteres especificados está presente (a, r, or n) 	
 
-```[a-n]``` 	    Retorna uma coincidência para qualquer caractere em caixa baixa, alfabeticamente entre a e n 	
 
-```[^arn]``` 	    Retorna uma coincidência para qualquer caractere EXCETO ```a, r, and n```
+**QUANTIFICADORES**
 
-```[0123]``` 	    Retorna uma coincidência onde qualuqer dos dígitos expecidifcados (0, 1, 2, or 3) esteja presente
+São caracteres utilizados para delimitar quantidades de ocorrências, conforme detalhado a seguir:
 
-```[0-9]``` 	    Retorna uma coincidência para qualquer dos dígitos entre 0 e 9 	
+? - 0 ou uma ocorrência
 
-```[0-5][0-9]``` 	Retorna uma coincidência para qualquer número de dois dígitos de 00 a 59 	
+\* - 0 ou mais ocorrências
 
-```[a-zA-Z]``` 	  Retorna uma coincidência para qualquer caractere alfabeticamente entre a e z, caixa baixa ou caisa alta
+\+ - 1 ou mais ocorrências
 
-```[+]``` 	      Em sets, ```+, *, ., |, (), $,{}``` têm significado especial, então ```[+]``` significa: retornar uma coincidência para qualuqer ```+``` caractere no texto
+{3} - Quantidade exata (neste caso, 3)
 
-### Alguns caracteres especiais comuns a várias linguagens
+{1,4} - Intervalo entre números (mínimo, máximo)
 
-```\n```  - Nova linha
 
-```\t```  - Tabulação
+**TRABALHANDO COM SETS**
 
-### ```\s``` não é apenas espaço, mas também outros meta caracteres. 
+Sets são conjuntos entre colchetes com significados especiais. Veja alguns exemplos:
 
-```\s``` = ```[\t\n\r\f\v]```
+[arn] - Retorna uma coincidência quando ao menos um dos caracteres especificados está presente (a, r ou n)
 
-```' '``` (espaço)
+[a-n] - Retorna uma coincidência para qualquer caractere em caixa baixa, alfabeticamente entre a e n
 
-```\t``` TAB
+[^arn] - Retorna uma coincidência para qualquer caractere EXCETO a, r, and n
 
-```\n``` nova linha (quebra de linha)
+[0123] - Retorna uma coincidência onde qualuqer dos dígitos expecidifcados (0, 1, 2, or 3) esteja presente
 
-```\r``` retono de cursor (volta o cursor para o inicio da linha)
+[^0123] - Retorna uma coincidência onde qualuqer dos dígitos expecidifcados (0, 1, 2, or 3)NÃO esteja presente
 
-```\f``` avanço de página
+[0-9] - Retorna uma coincidência para qualquer dos dígitos entre 0 e 9
 
-```\v``` vertical TAB - (usado em configurações de impressora)
+[a-zA-Z] - Retorna uma coincidência para qualquer caractere alfabeticamente entre a e z, caixa baixa ou caixa alta
 
-### Trabalhando com grupos
-Quando se utiliza expressões com grupos apenas para capturar o retorno booleano (True or False), pode ser útil indicar que não irá utilizar o conteúdo,
-o que evita advertências do Python (warnings).
+[+] - Dentro de um set +, *, .,|, (), $,{} têm significado literal. Por exemplo, [+] significa: retornar uma coincidência para qualuqer caractere "+" no texto
 
-Exemplo: Na expressão regular ```r"abc(isto|aquilo)"```, use ```r"abc(?:isto|aquilo)"``` ou simplesmente troque ```(abc)``` por ```(?:abc)``` se espera apenas o resultado booleano.
 
-## Exemplo de regex
-```[1-5]```	- Intervalo entre 1 e 5
+**TRABALHANDO COM GRUPOS**
 
-```[a-zA-Z]``` - Coincide de a a z caixa baixa e caixa alta
+Grupos são utilizados para capturar apenas a parte desejada de uma sentença. Apenas a parte que está entre parêntesis "()", será retornada.
+Exemplo: 
 
+texto = "123abc123 abc texto"
+
+padrão sem grupo: "\d+\D+\d+"
+
+resultado: ["123abc123"]
+
+padrão com grupo: "\d+(\D+)\d+"
+
+resultado: ["abc"]
+
+Observação: quando se utiliza expressões com grupos, mas não se deseja capturar o conteúdo, é necessário indicar o Python, utlizando o símbolo "?:".
+Exemplo: Na expressão regular r"abc(isto|aquilo)(segunda_expresao)", caso o desejo seja apenas capturar o segundo grupo, use:
+r"abc(?:isto|aquilo)(segunda_expresao)" 
+ou simplesmente troque (abc) por (?:abc) se não deseja capturar o conteúdo do grupo.
+Exemplo:
+
+texto = "123abc 456abc texto"
+
+padrão com grupo: "(123|456)+\D+\s+"
+
+resultado: ['123', '456']
+
+padrão desconsiderando o grupo: "(?:123|456)+\D+\s+"
+
+resultado: ['123abc', '456abc']
+
+
+**ALGUNS EXEMPLOS DE CARACTERES ESPECIAIS, COMUNS A VÁRIAS LINGUAGENS DE PROGRAMAÇÃO TAMBÉM USADOS EM REGEX:**
+
+
+\n - Nova linha
+
+\t - Tabulação
+
+\s - Não é apenas espaço, mas também outros meta caracteres (\s = [\t\n\r\f\v])
+
+' ' - espaço
