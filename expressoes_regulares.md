@@ -4,7 +4,7 @@ Ver também: https://www.w3schools.com/python/gloss_python_regex_metacharacters.
 
 Para um nível avançado, veja: https://docs.python.org/3/howto/regex.html#non-capturing-and-named-groups
 
-# EXPRESSÕES REGULARES (REGULAR EXPRESSIONS - REGEX))
+# EXPRESSÕES REGULARES (REGULAR EXPRESSIONS - REGEX)
 
 **METACARATERES** (., ^, $, *, +, ?, { }, [ ], ( ), \ e |)
 
@@ -77,7 +77,7 @@ São caracteres utilizados para delimitar quantidades de ocorrências, conforme 
 {1,4} - Intervalo entre números (mínimo, máximo)
 
 
-**TRABALHANDO COM SETS**
+**TRABALHANDO COM CONJUNTOS (SETS)**
 
 Sets são conjuntos entre colchetes com significados especiais. Veja alguns exemplos:
 
